@@ -1,0 +1,540 @@
+body {
+	font-family: arial, helvetica;
+	background-color: black;
+}
+
+/* container */
+.container {
+	width: 1366px;
+	background-color: black;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+/** 
+*	the whole menu 
+*/
+.menu-container {
+	background-image: url("../img/starfield-banner.jpg");
+	margin-bottom: 10px;
+}
+
+/*** logo ***/
+.nasa-logo {
+	float: left;
+	padding-top: 10px;
+	padding-left: 10px;
+}
+
+.fake {
+	position: absolute;
+	top: 45px;
+	font-size: 30px;
+	color: rgba(255, 255, 0, 0.9);
+	font-weight: bold;
+	transform: rotate(22.5deg);
+	letter-spacing: 3px;
+	font-style: italic;
+	font-family: serif;
+}
+
+/*** table main-menu ***/
+
+/* define the table */
+.table-menu-main {
+	margin-left: auto;
+	font-size: 20px;
+	color: white;
+}
+
+/* define the seperate cells */
+.table-menu-main td {
+	padding-left: 10px;
+	padding-right: 10px;
+	border-right: 2px solid grey;
+}
+
+/* define the second last and the last td (child) */
+.table-menu-main td:nth-last-child(2), td:last-child {
+	border-right: 0px;
+}
+
+/* define the input */
+.table-menu-main input {
+	color: white;
+	font-weight: bold;
+	padding-top: 0px;
+	padding-bottom: 0px;
+	margin-top: 5px;
+	height: 35px;
+	background-color: grey;
+	/* insert search-icon: https://stackoverflow.com/questions/917610/put-icon-inside-input-element-in-a-form */
+	background-image: url("../img/icons8-search-50.png");	/* https://icons8.com/icon/132/search */
+	background-position: 140px 5px;
+    background-repeat: no-repeat;
+	background-size: 15%;
+}
+
+/* define the icon share/connect*/
+.icon-connect {
+	float: right;
+	width: 50px;
+	height: 50px;
+	background-image: url("../img/icons8-connect-50_white.png");	/* https://icons8.com/icon/49017/connect */
+	background-position: 10px 12px;
+	background-repeat: no-repeat;
+	background-size: 50%;
+}
+
+
+/* define the div of the sub-menu */
+.div-menu-sub {
+	position: relative;
+}
+
+/*** table sub-menu ***/
+
+/* define the table */
+.table-menu-sub {
+	margin-top: 10px;
+	background-color: grey;
+	margin-left: 165px;
+	margin-right: auto;
+	border-spacing: 0px 10px;
+	font-size: 13px;
+	color: white;
+}
+
+/* define the seperate cells */
+.table-menu-sub td {
+	padding-left: 12px;
+	padding-right: 12px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	border-right: 1px solid lightgrey;
+}
+
+/* define the last td (child) */
+.table-menu-sub td:last-child {
+	border-right: 0px;
+}
+
+/*** 
+*	define the Login-Button 
+***/
+.login-button {
+	position: absolute;
+	right: 0;
+	bottom: 10px;
+}
+
+.login-button-admin {
+	letter-spacing: 0px;
+	float: right;
+	bottom: 10px;;
+}
+
+.login-button a, .login-button-admin a {
+	text-decoration: none;
+}
+
+/** define the page title **/
+.page-title {
+	color: white;
+	font-size: 50px;
+	letter-spacing: 20px;
+	text-align: center;
+	padding: 20px;
+}
+
+/** 
+*	the whole main
+*/
+
+.main-container {
+	color: white;
+}
+
+
+/*** define the table for the news ***/
+.table-news {
+	width: 100%;
+}
+
+.display-none {
+	display: none;
+}
+
+/* define all cells */
+.table-news td {
+/* 	height: 320px; */
+ 	height: 320px;
+	border-bottom: 10px solid black;
+}
+
+/* define the border for first cell in a row */
+.table-news-td-left {
+	border-right: 10px solid black;
+}
+
+
+/* define the border for last cell in a row */
+.table-news-td-middle {
+	border-right: 10px solid black;
+}
+
+/* define the border for middle cell in a row */
+.table-news-td-right {
+}
+
+/*** define the boxes ***/
+/* define 1 column box*/
+.box-1col {
+	width: 25%;
+	position: relative;
+	background-repeat: no-repeat;
+	background-size: 100% 100%;	/* width, height */
+}
+
+/* define 2 column box */
+.box-2col {
+	width: 50%;
+	position: relative;
+	background-repeat: no-repeat;
+	background-size: 100% 100%;	/* width, height */
+}
+
+/* define 3 column box */
+.box-3col {
+	width: 75%;
+	position: relative;
+	background-repeat: no-repeat;
+	background-size: 100% 100%;	/* width, height */
+}
+
+/* define 4 column box */
+.box-4col {
+	width: 100%;
+	position: relative;
+	background-repeat: no-repeat;
+	background-size: 100% 100%;	/* width, height */
+}
+
+/* expand the <a> to the whole cell */
+.box-4col a {
+	width: 100%;
+	display: block;
+	position: absolute;
+	top:0;
+	bottom:0;
+	right:0;
+	left:0;
+}
+
+
+/*** define the special "pic-arrow-text" (pat) box ***/
+/* define the picturebox */
+.pat-picbox {
+	float: left;
+	width: 50%;
+	height: 100%;
+/*	background-image: url("../img/60th_leading_edge_of_flight_thumbnail.jpg"); */
+	background-size: 100% 339px;
+}
+
+/* define the arrow */
+.pat-arrow {
+	margin-top: 30%;
+	border-style: solid;
+	border-color: transparent white;
+	border-width: 60px 60px 60px 0px;
+}
+
+/* define the textbox */
+.pat-textbox {
+	float: right;
+	height: 100%;
+	width: 50%;
+	background-color: white;
+}
+
+/* define the text for the textbox */
+.pat-textbox-text {
+	padding: 15px;
+}
+
+.pat-textbox-hl {
+	font-size: 22px;
+	color: rgb(93, 127, 185);
+}
+
+.pat-textbox-middle {
+	font-size: 13px;
+	color: black;
+}
+
+.pat-textbox-bottom {
+	font-size: 12px;
+	color: rgb(93, 127, 185);
+}
+
+/*** define the subtitle headlines in the boxes ***/
+/* define container for col4-boxes */
+.box-headline-4col-container {
+	position: absolute;
+	bottom: 70px;
+	width: 100%;
+}
+
+/* define the headline 1 for col4-boxes */
+.hl1-col4 {
+	position: absolute;
+	min-width: 10px;
+	max-width: 50%;
+	margin-left: 40px;
+	bottom: 0px;
+	width: auto;
+	padding: 8px;
+	background-color: rgba(93, 127, 185, 0.9);	/* red, green, blue, transparency */
+	color: white;
+	font-weight: bold;
+}
+
+/* define the headline 2 for col4-boxes */
+.hl2-col4 {
+	position: absolute;
+	min-width: 10px;
+	max-width: 50%;
+	margin-left: 40px;
+	width: auto;
+	padding: 8px;
+	background-color: rgba(255, 255, 255, 0.9);	/* red, green, blue, transparency */
+	color: black;
+	font-weight: bold;
+}
+
+
+/* define container for smaller boxes */
+.box-headline-container {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+}
+
+/* define the headline 1 for smaller boxes */
+.hl1 {
+	min-width: 10px;
+	max-width: 50%;
+	width: auto;
+	padding: 8px;
+	background-color: rgba(93, 127, 185, 0.9);	/* red, green, blue, transparency */
+	color: white;
+	font-weight: bold;
+}
+
+/* define the headline 2 for smaller boxes */
+.hl2 {
+	margin-top: 8px;
+	padding: 8px;
+	background-color: rgba(255, 255, 255, 0.9);	/* red, green, blue, transparency */
+	color: black;
+	font-weight: bold;
+}
+
+/* define the more information area */
+.moreInfo{
+	position: relative;
+	width: auto;
+	height: 306px;
+	background-color: rgb(244, 241, 240);
+}
+
+/** NASA-Event box **/
+/* define the whole box */
+.nasa-events {
+	background-color: rgb(93, 127, 185);
+	color: white;
+	font-size: 11px;
+}
+
+/* define the top area */
+.nasa-events-top {
+	position: relative;
+	padding: 5px;
+	height: 306px;
+}
+
+/* define the bottom area */
+.nasa-events-bottom {
+	position: absolute;
+	padding: 5px;
+	bottom: 0px;
+	width: 95%;
+}
+
+/* define the String "Calendar" */
+.nasa-events-bottom-calendar {
+	margin-left: 30px;
+}
+
+/* define the String "Launch and Landing" */
+.nasa-events-bottom-lal {
+	margin-left: 90px;
+}
+
+/* define the <hr/> Tag in this area */
+.nasa-events-hr {
+	color: white;
+	background-color: white;
+	height: 1px;
+}
+
+/** Tweet box **/
+/* define the whole box */
+.tweet {
+	background-color: grey;
+}
+
+/* define the headline area */
+.tweet-headline {
+	margin-left: 10px;
+	margin-bottom: 10px;
+	color: white;
+}
+
+/* define the first part ("Tweet") of headline */
+.tweet-headline-first {
+	font-size: 20px;
+	margin-right: 5px;
+}
+
+/* define the second part ("@NASA") of headline*/
+.tweet-headline-second {
+	color: blue;
+}
+
+/* define the bottom area */
+.tweet-bottom {
+	height: 278px;
+	overflow-y: scroll;
+	margin-left: 10px;
+	border-top: 1px solid lightgrey;
+}
+
+.tweet-bottom a {
+	display: block;
+	text-decoration: none;
+	padding: 2%;
+	text-align: justify;
+	margin-right: 2%;
+}
+.tweet-bottom a:hover {
+	color: darkred;
+	text-decoration: underline;
+	background-color: RGBA(247, 240, 238,0.3);  
+}
+
+/*** backgrounds of the boxes ***/
+/*
+#box001_1 td {
+	background-image: url("../img/presentation13_0.jpg");
+}
+
+#box001_2 td {
+	background-image: url("../img/atacama_1.jpg");
+}
+
+#box001_3 td {
+	background-image: url("../img/h-855-rwaur_illg_specta.jpg");
+}
+*/
+#box003 {
+	background-image: url("../img/pia20919.jpg");
+}
+
+#box006 {
+	background-image: url("../img/bannerex.jpg");
+}
+
+#box008 {
+	background-image: url("../img/videothumbnail.jpg");
+}
+
+#box009 {
+	background-image: url("../img/pia17652b-16.gif");
+}
+
+#box010 {
+	background-image: url("../img/crewdragon_iss_graphic.jpg");
+}
+
+#box011 {
+	background-image: url("../img/mars-dust-storm.gif");
+}
+
+#box012 {
+	background-image: url("../img/potw1015a.jpg");
+}
+
+#box013 {
+	background-image: url("../img/marsmountain20180828-16.gif");
+}
+
+
+/**
+*	login form
+**/
+.login-form {
+	margin-left: 35%;
+	margin-top: 100px;
+}
+
+/**
+*	admin page
+**/
+.message {
+	text-align: center;
+	font-size: 20px;
+	font-weight: bold;
+	margin-bottom: 10px;
+}
+
+.success {
+	color: green;
+}
+
+.error {
+	color: red;
+}
+
+.form-admin {
+	margin-left: 30%;
+}
+
+/**
+*	article page
+**/
+.article-error {
+	font-size: 25px;
+	color: red;
+	text-align: center;
+	padding-top: 20px;
+}
+
+.article-title {
+	
+}
+
+.article-subtitle {
+	padding-bottom: 20px;
+}
+
+.article-media {
+	float: left;
+	margin: 15px;
+}
+
+.article-text {
+
+}
