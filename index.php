@@ -33,7 +33,7 @@ $arrayPtbData = $BOX->getPtbData();
 <html>
 	<head>
 		<link rel="stylesheet" href="<?=CSS_PATH?>assignment.css" type="text/css" />
-		<script type="text/javascript" src="<?=JS_PATH?>assignment.js" ></script>
+		<script type="text/javascript" src="<?=JS_PATH?>assignment.js" async></script>
 		<title>NASA (3)</title>
 	</head>
 	<body>

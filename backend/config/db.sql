@@ -25,9 +25,9 @@ CREATE TABLE IF NOT EXISTS article (
 	published DATETIME NOT NULL,								-- datetime of adding the article
 	title VARCHAR(100) NOT NULL,								-- title of the article
 	subtitle VARCHAR(255) NOT NULL,								-- subtitle of the article
-	text_path VARCHAR(255) NOT NULL,							-- filepath to the text
+	text_filename VARCHAR(255) NOT NULL,						-- filename to the text
 	media_type ENUM('img', 'video') NOT NULL,					-- possible media types
-	media_path VARCHAR(255) NOT NULL,							-- filepath to the media
+	media_filename VARCHAR(255) NOT NULL,						-- filename to the media
 	media_size ENUM('col1', 'col2', 'col3', 'col4') NOT NULL,	-- possible media sizes
 	top_article BOOLEAN NOT NULL DEFAULT FALSE,					-- should show in the rotation
 	user_id INTEGER NOT NULL, 									-- user ID

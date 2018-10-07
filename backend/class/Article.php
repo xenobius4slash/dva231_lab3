@@ -3,8 +3,6 @@ require_once 'DatabaseArticle.php';
 
 class Article {
 	private $textDir = '../../backend/content/article/';
-	private $imgDir = '';
-	private $videoDir = '';
 	private $article = null;
 
 	function __construct() {}
@@ -12,14 +10,6 @@ class Article {
 
 	private function getTextDir() {
 		return $this->textDir;
-	}
-
-	private function getImgDir() {
-		return $this->imgDir;
-	}
-
-	private function getVideoDir() {
-		return $this->videoDir;
 	}
 
 	/** check if an article is loaded and valid
@@ -50,6 +40,18 @@ class Article {
 	public function getArticleId() {
 		if($this->isArticleLoaded()) {
 			return $this->article['id'];
+		} else {
+			return false;
+		}
+	}
+
+	/** set the id of the loaded article
+	*	@return		Bool
+	*/
+	public function setArticleId($value) {
+		if($this->isArticleLoaded()) {
+			$this->article['id'] = $value;
+			return true;
 		} else {
 			return false;
 		}
@@ -124,6 +126,29 @@ class Article {
 		}
 	}
 
+	/** get the filename of the text of the loaded article
+	*	@return		FALSE || String
+	*/
+	public function getArticleTextFilename() {
+		if($this->isArticleLoaded()) {
+			return $this->article['text_filename'];
+		} else {
+			return false;
+		}
+	}
+
+	/** set the filename of the text of the loaded article
+	*	@return		Bool
+	*/
+	public function setArticleTextFilename($value) {
+		if($this->isArticleLoaded()) {
+			$this->article['text_filename'] = $value;
+			return true;
+		} else {
+			return false;
+		}
+	}
+
 	/** get the media type of the loaded article
 	*	@return		FALSE || String
 	*/
@@ -151,23 +176,23 @@ class Article {
 		}
 	}
 
-	/** get the media path of the loaded article
+	/** get the media filename of the loaded article
 	*	@return		FALSE || String
 	*/
-	public function getArticleMediaPath() {
+	public function getArticleMediaFilename() {
 		if($this->isArticleLoaded()) {
-			return $this->article['media_path'];
+			return $this->article['media_filename'];
 		} else {
 			return false;
 		}
 	}
 
-	/** set the media path of the loaded article
+	/** set the media filename of the loaded article
 	*	@return		Bool
 	*/
-	public function setArticleMediaPath($value) {
+	public function setArticleMediaFilename($value) {
 		if($this->isArticleLoaded()) {
-			$this->article['media_path'] = $value;
+			$this->article['media_filename'] = $value;
 			return true;
 		} else {
 			return false;
@@ -260,13 +285,16 @@ class Article {
 	*/
 	public function createArticle() {
 		$article = array(
+			'id' => null,
 			'title' => null,
 			'subtitle' => null,
 			'text' => null,
+			'text_filename' => null,
 			'media_type' => null,
-			'media_path' => null,
+			'media_filename' => null,
 			'media_size' => null,
-			'top_article' => null
+			'top_article' => null,
+			'user_id' => null
 		);
 		return $this->setLoadedArticle($article);
 	}
@@ -276,8 +304,8 @@ class Article {
 	*	@retuen		Bool
 	*/
 	private function existArticleById($id) {
-		// TODO: DB-Abfrage
-		if( ... ) ) {
+		$DBA = new DatabaseArticle();
+		if( $DBA->existArticleById($id) ) {
 			return true;
 		} else {
 			return false;
@@ -294,15 +322,21 @@ class Article {
 			$return['status'] = false;
 			$return['msg'] = 'the requested article does not exists';
 		} else {
-			// TODO: DB-Abfrage
-			if( ... ) {
+			$DBA = new DatabaseArticle();
+			$result = $DBA->getArticleById($id);
+			if( $result === false  ) {
 				$return['status'] = false;
 				$return['msg'] = 'error while reading the database';
 			} else {
-				// TODO: Text aus Datei lesen
-				if( ... ) {
-					// TODO: DB-Array verwenden
-					$this->setLoadedArticle($article);
+				$textFilename = $result[0]['text_filename'];
+				error_log("Filename of the article with the id $id: $textFilename");
+				$articleText = file_get_contents($this->getTextDir().$textFilename);
+				if($articleText === false) {
+					$return['status'] = false;
+					$return['msg'] = 'error while reading the text from file';
+				} else {
+					$this->setLoadedArticle($result[0]);
+					$this->setArticleText($articleText);
 					$return['status'] = true;
 				}
 			}
@@ -310,71 +344,33 @@ class Article {
 		return $return;
 	}
 
+	/** insert the loaded article as a new article into the database
+	*	@return		FALSE || Integer (inserted article-id)
+	*/
 	public function insertLoadedArticleInDb() {
-		// TODO
+		$DBA = new DatabaseArticle();
+		$DBA->insertNewArticle(	$this->getArticleTitle(), $this->getArticleSubtitle(), $this->getArticleTextFilename(),
+								$this->getArticleMediaType(), $this->getArticleMediaFilename(), $this->getArticleMediaSize(),
+								$this->getArticleTopArticle(), $this->getArticleUserId() );
 	}
 
-
-###############################################
-
-/*
-	private function getArticleDir() {
-		return $this->articleDir;
-	}
-
-	private function getArticleDirInsert() {
-		return $this->articleDirInsert;
-	}
-
-	private function getArticleCountFiles() {
-		return $this->articleCountFiles;
-	}
-
-	private function setArticleCountFiles($value) {
-		$this->articleCountFiles = $value;
-	}
-
-	private function getArticleFullpathById($id) {
-		return $this->getArticleDir()."article_$id.json";
-	}
-
-	private function getArticleFullpathByIdInsert($id) {
-		return $this->getArticleDirInsert()."article_$id.json";
-	}
-
-	
-	private function loadCountArticleByCountFiles() {
-		$i = 0;
-		foreach( glob($this->getArticleDirInsert()."article_*.json") as $filename  ) {
-			$i++;
-		}
-		$this->setArticleCountFiles($i);
-	}
-
-*/
-
-	/** set the title of the loaded article
+	/** save the text of the loaded article in a text file
 	*	@return		Bool
 	*/
-/*
-	public function setArticleId($value) {
-		if($this->isArticleLoaded()) {
-			$this->article['id'] = $value;
-			return true;
-		} else {
-			return false;
-		}
+	public function saveLoadedArticleTextToFile() {
+		$filepath = $this->getTextDir().$this->getArticleTextFilename();
+		return file_put_contents($this->getTextDir().$this->getArticleTextFilename(), $this->getArticleText());
 	}
-*/
 
-	/** write the data of the loaded article in a json file
-	*	@return		Bool
+	/** Search for articles which match (title, subtitle) with the searchstring
+	*	@param		$search			String
+	*	@return		FALSE || Array
 	*/
-/*
-	public function writeLoadedArticle() {
-		return file_put_contents($this->getArticleFullpathById( $this->getArticleId() ), json_encode($this->getLoadedArticle()));
+	public function searchForArticles($search) {
+#		error_log("Article::searchForArticles($search)");
+		$DBA = new DatabaseArticle();
+		return $DBA->getSearchResultsByString($search);
 	}
-*/
 
 }
 ?>

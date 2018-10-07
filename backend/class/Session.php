@@ -2,12 +2,13 @@
 require_once 'DatabaseSession.php';
 
 class Session {
-	private $expirationMinutes = 10;	// how long is a session valid
+	private $expirationMinutes = 1000;	// how long is a session valid
 
 	function __construct() {
 		session_start();
 		$this->setEmptyCookie();
-		DatabaseSession::cleanSessionTable();
+		$DBS = new DatabaseSession();
+		$DBS->cleanSessionTable();
 	}
 
 	function __destruct() { }
@@ -82,9 +83,20 @@ class Session {
 		}
 	}
 
+	/** get user-id in session
+	*	@return		Integer
+	*/
+	public function getSessionUserId() {
+		if( $this->getSessionId() != '') {
+			return $_SESSION['uid'];
+		} else {
+			return false;
+		}
+	}
+
 	/** set user-id in session
 	*	@param		$userId		Integer
-	*	@retuen		Bool
+	*	@return		Bool
 	*/
 	public function setSessionUserId($userId) {
 		if( $this->getSessionId() != '') {

@@ -4,8 +4,9 @@ require_once 'Database.php';
 class DatabaseSession extends Database {
 
 	/** delete all expired Sessions in the database */
-	public static function cleanSessionTable() {
+	public function cleanSessionTable() {
 		$sqlQuery = sprintf("DELETE FROM session WHERE expiration <= NOW()");
+		$this->getDb()->query($sqlQuery);
 	}
 
 	/** get a valid session by a user-id and a session-id

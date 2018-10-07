@@ -3,9 +3,16 @@ $( document ).ready(function() {
 	$('#search_input').keyup(function() {
 		console.log( $(this).val() );
 		if( $(this).val().length >= 2 ) {
+			var ajaxUrl;
+			if( $('#index_bool').val() == 1 ) {
+				ajaxUrl = 'backend/ajax/search.php';
+			} else {
+				ajaxUrl = '../../backend/ajax/search.php';
+			}
+			console.log("ajaxUrl: " + ajaxUrl);
 			$.ajax({
 				method: 'POST',
-				url: 'backend/ajax/search.php',
+				url: ajaxUrl,
 				dataType: 'json',
 				data: { search: $(this).val() },
 				success: function(answer) {

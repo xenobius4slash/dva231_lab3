@@ -1,5 +1,5 @@
-<?php 
-?>
+<script type="text/javascript" src="<?=JS_PATH?>jquery.min.js"></script>
+<script type="text/javascript" src="<?=JS_PATH?>search.js"></script>
 <div id="menu_container" class="menu-container">
 	<a href="<?=INDEX_PATH?>index.php">
 		<div id="menu_logo" class="nasa-logo">
@@ -18,8 +18,12 @@
 				<td>About</td>
 				<td>NASA Audiences</td>
 				<td>
-					<input type="text" placeholder="Search" />
-					<span id="icon-connect" class="icon-connect"></span>
+					<div class="search">
+						<input id="search_input" type="text" placeholder="Search" />
+						<span id="icon-connect" class="icon-connect"></span>
+						<input type="hidden" id="index_bool" value="<?=(INDEX_PATH=='')?('1'):('0')?>" />
+						<div id="search_result" class="search-result"></div>
+					</div>
 				</td>
 			</tr>
 		</table>
@@ -43,26 +47,8 @@
 				echo "<a href=\"".HTML_PATH."admin.php\"><input type=\"button\" value=\"Admin\" /></a>";
 				echo "&nbsp;";
 				echo "<a href=\"".INDEX_PATH."index.php?logout=1\"><input type=\"button\" value=\"Logout\" /></a>";
-/*
-				if($index) {
-					echo "<a href=\"frontend/html/admin.php\"><input type=\"button\" value=\"Admin\" /></a>";
-					echo "&nbsp;";
-					echo "<a href=\"index.php?logout=1\"><input type=\"button\" value=\"Logout\" /></a>";
-				} else {
-					echo "<a href=\"admin.php\"><input type=\"button\" value=\"Admin\" /></a>";
-					echo "&nbsp;";
-					echo "<a href=\"../../index.php?logout=1\"><input type=\"button\" value=\"Logout\" /></a>";
-				}
-*/
 			} else {
 				echo "<a href=\"".HTML_PATH."login.php\"><input type=\"button\" value=\"Login\" /></a>";
-/*
-				if($index) {
-					echo "<a href=\"frontend/html/login.php\"><input type=\"button\" value=\"Login\" /></a>";
-				} else {
-					echo "<a href=\"login.php\"><input type=\"button\" value=\"Login\" /></a>";
-				}
-*/
 			} ?>
 		</div>
 	</div>

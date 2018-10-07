@@ -75,6 +75,34 @@ body {
 	background-size: 15%;
 }
 
+/* search */
+.search {
+	position: relative;
+}
+
+.search-result {
+	display: none;
+	width: auto;
+	border: 1px solid white;
+	background: rgba(128,128,128,0.9);
+	z-index: 10;
+	position: absolute;
+	top: 44px;
+	right: 0;
+	white-space: nowrap;
+	padding: 10px;
+}
+
+.search-link {
+	color: white;
+	line-height: 1.5;
+	text-decoration: none;
+}
+
+.search-link:hover {
+    text-decoration: underline;
+}
+
 /* define the icon share/connect*/
 .icon-connect {
 	float: right;
@@ -509,7 +537,7 @@ body {
 }
 
 .form-admin {
-	margin-left: 30%;
+	margin-left: 20%;
 }
 
 /**

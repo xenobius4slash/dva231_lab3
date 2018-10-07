@@ -18,7 +18,7 @@ if( $S->isLoggedIn() === true ) { $isLogin = true; }
 		<div id="container" class="container">
 			<?php include 'menu.php'; ?>
 			<div id="main_container" class="main-container">
-				<div class="page-title">article page</div>
+				<div class="page-title"></div>
 				<div id="article" name="article">
 					<?php $isLoaded = true;
 						if(isset($_GET['id']) && intval($_GET['id'])) { 
@@ -35,8 +35,8 @@ if( $S->isLoggedIn() === true ) { $isLogin = true; }
 					<div id="article_subtitle" name="article_subtitle" class="article-subtitle"><h2><?=($isLoaded)?($ART->getArticleSubtitle()):('')?></h2></div>
 					<div id="article_media" name="article_media" class="article-media" style="float: left; margin: 15px;" >
 						<?php if($isLoaded) {
-							if($ART->getArticleMediaType() == 'img') { echo "<img src=\"../../".$ART->getArticleMediaPath()."\"/>"; }
-							else { echo "<iframe width=\"100%\" height=\"98%\" src=\"../../".$ART->getArticleMediaPath()."\" frameborder=\"0\" allow=\"autoplay; encrypted-media\" allowfullscreen></iframe>"; }
+							if($ART->getArticleMediaType() == 'img') { echo "<img src=\"".IMG_PATH.$ART->getArticleMediaFilename()."\"/>"; }
+							else { echo "<iframe width=\"100%\" height=\"98%\" src=\"".VIDEO_PATH.$ART->getArticleMediaFilename()."\" frameborder=\"0\" allow=\"autoplay; encrypted-media\" allowfullscreen></iframe>"; }
 						} ?>
 					</div>
 					<span class="article-text"><?=($isLoaded)?($ART->getArticleText()):('')?></span>

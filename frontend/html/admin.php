@@ -44,28 +44,48 @@ if( $S->isLoggedIn() === true ) { $isLogin = true; }  else { header('Location: '
 				</div>
 				<form id="form_admin" class="form-admin" method="post" action="<?=SCRIPT_PATH?>admin.php" enctype="multipart/form-data">
 					<div>
-						Replace the piece of news for the Picture-Text-Box and generate a new col4-Item.
+						<h3>Add a new article into the database.</h3>
 						<br/><br/>
 					</div>
 					<table>
 						<tr>
-							<td><span <?=($err && $error['title']==1)?($fontCol):('')?>>Title:</span></td>
-							<td><input type="text" id="title" name="title" maxlength="50"  size="50" /></td>
+							<td><span <?=($err && $error['top_article']==1)?($fontCol):('')?>>Top article:</span></td>
+							<td>
+								<input type="radio" id="top_article_no" name="top_article" value="0" checked="checked" /> no
+								&nbsp;&nbsp;&nbsp;
+								<input type="radio" id="top_article_yes" name="top_article" value="1" /> yes
+							</td>
 						</tr>
 						<tr>
-							<td><span <?=($err && $error['subtitle']==1)?($fontCol):('')?>>Subtitle <small>(col4)</small>:</span></td>
-							<td><input type="text" id="subtitle" name="subtitle"  maxlength="200" size="50" /></td>
+							<td><span <?=($err && $error['title']==1)?($fontCol):('')?>>Title:</span></td>
+							<td><input type="text" id="title" name="title" maxlength="100"  size="100" /></td>
+						</tr>
+						<tr>
+							<td><span <?=($err && $error['subtitle']==1)?($fontCol):('')?>>Subtitle:</span></td>
+							<td><input type="text" id="subtitle" name="subtitle"  maxlength="255" size="100" /></td>
 						</tr>
 						<tr>
 							<td><span <?=($err && $error['text']==1)?($fontCol):('')?>>Text:</span></td>
-							<td><textarea id="text" name="text" rows="4" cols="54"></textarea></td>
+							<td><textarea id="text" name="text" rows="4" cols="100"></textarea></td>
 						</tr>
 						<tr>
-							<td><span <?=($err && $error['media_type']==1)?($fontCol):('')?>>Media Type:</span></td>
+							<td><span <?=($err && $error['media_type']==1)?($fontCol):('')?>>Media type:</span></td>
 							<td>
 								<input type="radio" id="mdia_type_img" name="media_type" value="img" checked="checked" onclick="selectRadioImg()"/> image
 								&nbsp;&nbsp;&nbsp;
 								<input type="radio" id="media_type_video" name="media_type" value="video" onclick="selectRadioVideo()" /> video
+							</td>
+						</tr>
+						<tr>
+							<td><span <?=($err && $error['media_size']==1)?($fontCol):('')?>>Media size:</span></td>
+							<td>
+								<input type="radio" id="mdia_size_col1" name="media_size" value="1" checked="checked" /> 1 column
+								&nbsp;&nbsp;&nbsp;
+								<input type="radio" id="mdia_size_col2" name="media_size" value="2" /> 2 column
+								&nbsp;&nbsp;&nbsp;
+								<input type="radio" id="mdia_size_col3" name="media_size" value="3" /> 3 column
+								&nbsp;&nbsp;&nbsp;
+								<input type="radio" id="mdia_size_col4" name="media_size" value="4" /> 4 column
 							</td>
 						</tr>
 						<tr>
