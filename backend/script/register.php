@@ -8,6 +8,7 @@ if( isset($_POST['register_submit']) ) {
 	$username = htmlspecialchars($_POST['register_username']);
 	$password1 = htmlspecialchars($_POST['register_password_1']);
 	$password2 = htmlspecialchars($_POST['register_password_2']);
+	$registerError = false;
 
 	$U = new User();
 	if( !$U->isValidUsername($username) ) {

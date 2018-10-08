@@ -329,7 +329,6 @@ class Article {
 				$return['msg'] = 'error while reading the database';
 			} else {
 				$textFilename = $result[0]['text_filename'];
-				error_log("Filename of the article with the id $id: $textFilename");
 				$articleText = file_get_contents($this->getTextDir().$textFilename);
 				if($articleText === false) {
 					$return['status'] = false;
@@ -367,7 +366,6 @@ class Article {
 	*	@return		FALSE || Array
 	*/
 	public function searchForArticles($search) {
-#		error_log("Article::searchForArticles($search)");
 		$DBA = new DatabaseArticle();
 		return $DBA->getSearchResultsByString($search);
 	}

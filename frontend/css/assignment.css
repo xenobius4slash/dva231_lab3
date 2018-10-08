@@ -69,7 +69,7 @@ body {
 	height: 35px;
 	background-color: grey;
 	/* insert search-icon: https://stackoverflow.com/questions/917610/put-icon-inside-input-element-in-a-form */
-	background-image: url("../img/icons8-search-50.png");	/* https://icons8.com/icon/132/search */
+/*	background-image: url("../img/icons8-search-50.png");	/* https://icons8.com/icon/132/search */
 	background-position: 140px 5px;
     background-repeat: no-repeat;
 	background-size: 15%;
@@ -91,6 +91,11 @@ body {
 	right: 0;
 	white-space: nowrap;
 	padding: 10px;
+}
+
+.search-highlight {
+	color: orange;
+	font-weight: bold;
 }
 
 .search-link {
